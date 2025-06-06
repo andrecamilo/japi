@@ -1,4 +1,4 @@
-package com.example.userapi.domain.model;
+package com.japi.userapi.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

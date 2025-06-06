@@ -1,6 +1,6 @@
-package com.example.userapi.domain.port;
+package com.japi.userapi.domain.port;
 
-import com.example.userapi.domain.model.User;
+import com.japi.userapi.domain.model.User;
 import java.util.List;
 import java.util.Optional;
 

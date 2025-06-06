@@ -1,4 +1,4 @@
-package com.example.userapi.config;
+package com.japi.userapi.config;
 
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
 
 @Configuration
-@EnableMongoRepositories(basePackages = "com.example.userapi.infrastructure.repository")
+@EnableMongoRepositories(basePackages = "com.japi.userapi.infrastructure.repository")
 @EnableMongoAuditing
 public class MongoConfig extends AbstractMongoClientConfiguration {
 

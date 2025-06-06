@@ -1,7 +1,7 @@
-package com.example.userapi.infrastructure.controller;
+package com.japi.userapi.infrastructure.controller;
 
-import com.example.userapi.domain.model.User;
-import com.example.userapi.domain.service.UserService;
+import com.japi.userapi.domain.model.User;
+import com.japi.userapi.domain.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;

@@ -12,7 +12,7 @@ Esta é uma API REST simples para gerenciamento de usuários, implementada usand
 O projeto está organizado seguindo a Arquitetura Hexagonal:
 
 ```
-src/main/java/com/example/userapi/
+src/main/java/com/japi/userapi/
 ├── domain/           # Camada de domínio (core)
 │   ├── model/       # Entidades de domínio
 │   ├── port/        # Portas (interfaces)

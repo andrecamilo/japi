@@ -1,7 +1,7 @@
-package com.example.userapi.infrastructure.repository;
+package com.japi.userapi.infrastructure.repository;
 
-import com.example.userapi.domain.model.User;
-import com.example.userapi.domain.port.UserRepository;
+import com.japi.userapi.domain.model.User;
+import com.japi.userapi.domain.port.UserRepository;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;

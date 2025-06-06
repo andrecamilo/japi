@@ -1,7 +1,7 @@
-package com.example.userapi.domain.service;
+package com.japi.userapi.domain.service;
 
-import com.example.userapi.domain.model.User;
-import com.example.userapi.domain.port.UserRepository;
+import com.japi.userapi.domain.model.User;
+import com.japi.userapi.domain.port.UserRepository;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
