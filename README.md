@@ -60,4 +60,74 @@ curl http://localhost:8080/api/users/1
 ### Deletar usuário
 ```bash
 curl -X DELETE http://localhost:8080/api/users/1
-``` 
+```
+
+## Docker
+
+### Requisitos
+- Docker
+- Docker Compose
+
+### Comandos Docker
+
+#### Construir e iniciar a aplicação
+```bash
+docker-compose up --build
+```
+
+#### Executar em background
+```bash
+docker-compose up -d
+```
+
+#### Parar a aplicação
+```bash
+docker-compose down
+```
+
+#### Ver logs
+```bash
+docker-compose logs -f
+```
+
+#### Reconstruir e reiniciar
+```bash
+docker-compose up --build --force-recreate
+```
+
+#### Verificar status
+```bash
+docker-compose ps
+```
+
+#### Parar e remover containers e imagens
+```bash
+docker-compose down --rmi all
+```
+
+### Acessando a aplicação
+- API: http://localhost:8080
+- Swagger UI: http://localhost:8080/swagger-ui/index.html
+
+### Estrutura dos arquivos Docker
+
+#### Dockerfile
+- Usa multi-stage build para otimizar o tamanho da imagem
+- Primeiro estágio: compilação com Maven
+- Segundo estágio: execução com JRE Alpine
+
+#### docker-compose.yml
+- Define o serviço da aplicação
+- Mapeia a porta 8080
+- Configura variáveis de ambiente
+- Define política de reinicialização
+- Cria uma rede dedicada
+- Inclui serviço MongoDB:
+  - Porta: 27017
+  - Volume persistente para dados
+  - Banco de dados: userdb
+
+### Acessando os serviços
+- API: http://localhost:8080
+- Swagger UI: http://localhost:8080/swagger-ui/index.html
+- MongoDB: localhost:27017 
