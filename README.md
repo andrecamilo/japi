@@ -7,6 +7,13 @@ Esta é uma API REST simples para gerenciamento de usuários, implementada usand
 - Java 17 ou superior
 - Maven 3.6.3 ou superior
 
+## Comandos aplicação
+
+mvn spring-boot:run
+mvn clean package
+
+java -jar target/java.api-0.0.1-SNAPSHOT.jar
+
 ## Estrutura do Projeto
 
 O projeto está organizado seguindo a Arquitetura Hexagonal:
