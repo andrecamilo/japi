@@ -11,6 +11,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @Document(collection = "users")
 public class User {
+
+    public User(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+    
     @Id
     private String id;
     private String name;

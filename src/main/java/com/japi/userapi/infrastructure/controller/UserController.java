@@ -45,4 +45,40 @@ public class UserController {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }
-} 
+
+    @DeleteMapping("/Thread/{id}")
+    @Operation(summary = "Excluir usuário")
+    public ResponseEntity<Void> deleteUserThread(@PathVariable String id) {
+        
+        final java.util.concurrent.SynchronousQueue<String> channel = new java.util.concurrent.SynchronousQueue<>();
+
+        Thread t1 = new Thread(() -> {
+            userService.deleteUser(id);
+            try {
+                channel.put("Thread 1 finished");
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        });
+
+        Thread t2 = new Thread(() -> {
+            try {
+                String msg = channel.take();
+
+                if (msg == "Thread 1 finished") {
+                    userService.createUser(new User("User from Thread 2","999@999.com"));
+                    return;
+                }
+                // Aqui você pode fazer algo com a mensagem recebida da thread 1
+                System.out.println("Thread 2 recebeu: " + msg);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        });
+
+        t1.start();
+        t2.start();
+
+        return ResponseEntity.accepted().build();
+    }
+}
