@@ -20,8 +20,6 @@ public class UserApiApplication {
                 System.out.println("[HEALTHCHECK] MongoDB is healthy");
             } catch (Exception e) {
                 System.err.println("[HEALTHCHECK] MongoDB is unavailable: " + e.getMessage());
-                // Opcional: lançar exceção para impedir o start da aplicação
-                // throw new IllegalStateException("MongoDB is unavailable", e);
             }
         };
     }

@@ -64,13 +64,8 @@ public class UserController {
         Thread t2 = new Thread(() -> {
             try {
                 User user = channel.take();
-                if (user == null) {
-                    userService.createUser(new User("User from Thread 2","999@999.com"));
-                    return;
-                }
                 user.setName(user.getName() + " - Updated by Thread 2");
                 userService.createUser(user);
-                // Aqui você pode fazer algo com o usuário recebido da thread 1
                 System.out.println("Thread 2 recebeu: " + user);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
