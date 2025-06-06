@@ -49,13 +49,13 @@ public class UserController {
     @DeleteMapping("/Thread/{id}")
     @Operation(summary = "Excluir usuário")
     public ResponseEntity<Void> deleteUserThread(@PathVariable String id) {
-        
-        final java.util.concurrent.SynchronousQueue<String> channel = new java.util.concurrent.SynchronousQueue<>();
+        final java.util.concurrent.SynchronousQueue<User> channel = new java.util.concurrent.SynchronousQueue<>();
 
         Thread t1 = new Thread(() -> {
+            var user = userService.getUserById(id);
             userService.deleteUser(id);
             try {
-                channel.put("Thread 1 finished");
+                channel.put(user.orElse(null));
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
@@ -63,14 +63,15 @@ public class UserController {
 
         Thread t2 = new Thread(() -> {
             try {
-                String msg = channel.take();
-
-                if (msg == "Thread 1 finished") {
+                User user = channel.take();
+                if (user == null) {
                     userService.createUser(new User("User from Thread 2","999@999.com"));
                     return;
                 }
-                // Aqui você pode fazer algo com a mensagem recebida da thread 1
-                System.out.println("Thread 2 recebeu: " + msg);
+                user.setName(user.getName() + " - Updated by Thread 2");
+                userService.createUser(user);
+                // Aqui você pode fazer algo com o usuário recebido da thread 1
+                System.out.println("Thread 2 recebeu: " + user);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
