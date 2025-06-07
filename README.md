@@ -7,6 +7,13 @@ Esta é uma API REST simples para gerenciamento de usuários, implementada usand
 - Java 17 ou superior
 - Maven 3.6.3 ou superior
 
+## Docker
+
+docker build -t java-api .
+docker stop java-api || true
+docker rm java-api || true
+docker run -d --name java-api -p 8080:8080 java-api
+
 ## Comandos aplicação
 
 mvn spring-boot:run
